@@ -1,0 +1,19 @@
+#sidebar_brand {
+  padding-inline: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#Navlink {
+  color: #cbd5e1;
+  margin-block: 8px;
+}
+
+#Navlink:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+#Logout {
+  position: absolute;
+  bottom: 0;
+}

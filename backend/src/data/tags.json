@@ -1,0 +1,42 @@
+[
+  {
+    "id": "tag-001",
+    "name": "High Performer",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "tag-002",
+    "name": "Needs Attention",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "tag-003",
+    "name": "Consistent",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "tag-004",
+    "name": "Fast Learner",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "tag-005",
+    "name": "Communication Issues",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "tag-5a95ebd2-48ad-48a0-913e-ec720aef8960",
+    "name": "Rising Star",
+    "createdAt": "2026-06-10T09:33:37.369Z"
+  },
+  {
+    "id": "tag-11c5029f-19c1-433c-a333-92a21e59059b",
+    "name": "Tensai Dev",
+    "createdAt": "2026-06-10T09:34:09.627Z"
+  },
+  {
+    "id": "tag-b49c2f08-bc02-4d83-a355-09405cfcd804",
+    "name": "Skill_full",
+    "createdAt": "2026-06-19T10:00:29.430Z"
+  }
+]

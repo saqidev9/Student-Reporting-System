@@ -1,0 +1,98 @@
+[
+  {
+    "id": "group-001",
+    "name": "Group A",
+    "batchId": "batch-001",
+    "courseId": "course-001",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "group-002",
+    "name": "Group B",
+    "batchId": "batch-001",
+    "courseId": "course-001",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "group-003",
+    "name": "Group A",
+    "batchId": "batch-001",
+    "courseId": "course-002",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "group-66be26a6-1d6e-4e94-b3ea-e222cba31dee",
+    "name": "Group D",
+    "batchId": "batch-001",
+    "courseId": "course-001",
+    "createdAt": "2026-06-08T08:52:16.189Z",
+    "updatedAt": "2026-06-08T08:52:16.189Z"
+  },
+  {
+    "id": "group-c892300c-0ec6-4749-8257-91b726a1ee05",
+    "name": "Group C",
+    "batchId": "batch-001",
+    "courseId": "course-001",
+    "createdAt": "2026-06-08T08:53:48.277Z",
+    "updatedAt": "2026-06-08T08:53:48.277Z"
+  },
+  {
+    "id": "group-06bfcedd-be57-4452-a6e0-e01a5d540470",
+    "name": "Group M",
+    "batchId": "batch-001",
+    "courseId": "course-001",
+    "createdAt": "2026-06-13T11:23:22.787Z",
+    "updatedAt": "2026-06-13T11:23:22.787Z"
+  },
+  {
+    "id": "group-6da8aef0-7934-49f8-9ce0-6cf1dd17c8c7",
+    "name": "Group T",
+    "batchId": "batch-001",
+    "courseId": "course-003",
+    "createdAt": "2026-06-13T19:56:19.100Z",
+    "updatedAt": "2026-06-13T19:56:19.101Z"
+  },
+  {
+    "id": "group-bb6d8518-8b93-4ace-ab9c-0043e2fa1985",
+    "name": "Alpha",
+    "batchId": "batch-1a08b1a2-6d3a-496d-a0c6-fe69e2a11805",
+    "courseId": "course-001",
+    "createdAt": "2026-06-16T12:01:07.259Z",
+    "updatedAt": "2026-06-16T12:01:07.259Z"
+  },
+  {
+    "id": "group-a1f69588-0d92-441e-a721-68f934122179",
+    "name": "Alpha 2",
+    "batchId": "batch-1a08b1a2-6d3a-496d-a0c6-fe69e2a11805",
+    "courseId": "course-001",
+    "createdAt": "2026-06-16T12:36:30.620Z",
+    "updatedAt": "2026-06-16T12:36:30.620Z"
+  },
+  {
+    "id": "group-3e07fd87-c6ec-41a4-936e-4e4e3eb7dc05",
+    "name": "Charli",
+    "batchId": "batch-1a08b1a2-6d3a-496d-a0c6-fe69e2a11805",
+    "courseId": "course-002",
+    "createdAt": "2026-06-16T12:37:02.082Z",
+    "updatedAt": "2026-06-16T12:37:02.082Z"
+  },
+  {
+    "id": "group-13112147-a644-4d6e-af10-a95a261e8446",
+    "name": "Alpha",
+    "batchId": "batch-8b973fff-eb0b-43ae-a604-502b5d344cf1",
+    "courseId": "course-872f9c20-587c-413c-8970-2200481b2086",
+    "createdAt": "2026-06-17T07:44:06.782Z",
+    "updatedAt": "2026-06-17T07:44:06.782Z"
+  },
+  {
+    "id": "group-7303f9a2-9073-41fb-bb32-afb670b66be0",
+    "name": "302",
+    "batchId": "batch-ce51fd2b-3336-4484-a4de-7e3d2a35b720",
+    "courseId": "course-001",
+    "createdAt": "2026-07-03T12:07:35.759Z",
+    "updatedAt": "2026-07-03T12:07:35.759Z"
+  }
+]

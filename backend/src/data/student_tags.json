@@ -1,0 +1,107 @@
+[
+  {
+    "id": "st-23b83d21-cd34-4e92-99b1-14782a0594dd",
+    "studentId": "student-001",
+    "tagId": "tag-003",
+    "assignedAt": "2026-06-19T09:49:33.904Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-f217c12b-b1e2-4754-8d74-b2a25a313de0",
+    "studentId": "student-002",
+    "tagId": "tag-11c5029f-19c1-433c-a333-92a21e59059b",
+    "assignedAt": "2026-06-19T10:31:51.125Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-b1034962-7742-4f3f-8558-783f1ff6c95e",
+    "studentId": "student-001",
+    "tagId": "tag-11c5029f-19c1-433c-a333-92a21e59059b",
+    "assignedAt": "2026-06-19T10:32:05.034Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-318ecd0a-6091-4829-bafb-2d6f09eadc8b",
+    "studentId": "student-2a587d52-ca1c-4e86-97b7-45d558173ed2",
+    "tagId": "tag-004",
+    "assignedAt": "2026-06-19T10:48:31.542Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-3711290b-9fed-477a-b9c2-a6f02fd7938c",
+    "studentId": "student-103e5827-82e2-4ee2-bbdb-7ad2dd724f83",
+    "tagId": "tag-005",
+    "assignedAt": "2026-06-19T11:16:43.068Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-b613df82-903b-4a16-b735-cc499461be08",
+    "studentId": "student-103e5827-82e2-4ee2-bbdb-7ad2dd724f83",
+    "tagId": "tag-5a95ebd2-48ad-48a0-913e-ec720aef8960",
+    "assignedAt": "2026-06-19T11:16:52.441Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-df344265-9046-4c6d-b4ad-3da0864c9624",
+    "studentId": "student-002",
+    "tagId": "tag-005",
+    "assignedAt": "2026-06-22T10:50:15.148Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-b8f301b4-2742-4aed-a0f8-22619dc84100",
+    "studentId": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "tagId": "tag-003",
+    "assignedAt": "2026-06-22T10:53:43.547Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-4bbc9379-adb1-4d3e-8b40-ae9ea5c4d737",
+    "studentId": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "tagId": "tag-5a95ebd2-48ad-48a0-913e-ec720aef8960",
+    "assignedAt": "2026-06-22T10:53:51.633Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-35c90d26-cfca-4e6b-8fca-63745fcab377",
+    "studentId": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "tagId": "tag-004",
+    "assignedAt": "2026-06-22T10:54:09.906Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-ed33d66b-5e9e-43cf-ab96-07b1e3f71eab",
+    "studentId": "student-001",
+    "tagId": "tag-001",
+    "assignedAt": "2026-06-30T11:11:11.315Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-59a99fbb-daf9-436f-b881-16eea09ae83b",
+    "studentId": "student-9643845c-2205-426f-9a78-9aa8ce56c941",
+    "tagId": "tag-005",
+    "assignedAt": "2026-06-30T12:26:28.674Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-4d8feec9-ef6c-49a3-b5b6-a168a27be656",
+    "studentId": "student-9343b4bf-0800-4b38-b28d-0c40390e9292",
+    "tagId": "tag-002",
+    "assignedAt": "2026-07-03T12:57:30.894Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-03cc5435-478b-4ac6-960e-c8ddc664f725",
+    "studentId": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "tagId": "tag-005",
+    "assignedAt": "2026-07-04T11:21:57.446Z",
+    "assignedBy": "admin-001"
+  },
+  {
+    "id": "st-fd18f4a8-df6d-43db-87ca-b56fb3aeb545",
+    "studentId": "student-001",
+    "tagId": "tag-004",
+    "assignedAt": "2026-07-04T11:22:33.733Z",
+    "assignedBy": "admin-001"
+  }
+]

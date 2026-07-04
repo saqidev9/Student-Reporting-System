@@ -1,0 +1,42 @@
+[
+  {
+    "id": "course-001",
+    "name": "Web Development",
+    "description": "Full stack web development",
+    "domain": "programming",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "course-002",
+    "name": "Graphic Design",
+    "description": "UI and visual design",
+    "domain": "designing",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "course-003",
+    "name": "Video Editing",
+    "description": "Professional video editing",
+    "domain": "video_editing",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "course-872f9c20-587c-413c-8970-2200481b2086",
+    "name": "Communication",
+    "description": "This is for testing\n",
+    "domain": "professional_skills",
+    "createdAt": "2026-06-11T16:38:16.207Z",
+    "updatedAt": "2026-06-11T16:38:16.207Z"
+  },
+  {
+    "id": "course-f3f9244e-7d87-4487-aa8d-cb734cf547ba",
+    "name": "Digital Marketing",
+    "description": "Social media and content strategy",
+    "domain": "professional_skills",
+    "createdAt": "2026-06-15T13:17:40.849Z",
+    "updatedAt": "2026-06-15T13:17:40.849Z"
+  }
+]

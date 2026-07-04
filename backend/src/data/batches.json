@@ -1,0 +1,58 @@
+[
+  {
+    "id": "batch-001",
+    "name": "Batch 1",
+    "description": "First intake",
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "batch-1a08b1a2-6d3a-496d-a0c6-fe69e2a11805",
+    "name": "Batch 2",
+    "description": "Second intake",
+    "isActive": true,
+    "createdAt": "2026-06-08T08:10:26.866Z",
+    "updatedAt": "2026-06-08T08:10:26.866Z"
+  },
+  {
+    "id": "batch-0486bb30-0a76-4666-8b58-45034cabc97a",
+    "name": "batch-5",
+    "description": "This is for testing",
+    "isActive": true,
+    "createdAt": "2026-06-11T12:52:15.814Z",
+    "updatedAt": "2026-06-11T12:52:15.814Z"
+  },
+  {
+    "id": "batch-ce51fd2b-3336-4484-a4de-7e3d2a35b720",
+    "name": "Batch-5",
+    "description": "this is for testing",
+    "isActive": true,
+    "createdAt": "2026-06-11T12:52:57.773Z",
+    "updatedAt": "2026-06-11T12:52:57.773Z"
+  },
+  {
+    "id": "batch-3dd1f898-e5b5-42e6-a170-856f573e9544",
+    "name": "Batch-6",
+    "description": "This is also for testing",
+    "isActive": true,
+    "createdAt": "2026-06-11T12:54:40.364Z",
+    "updatedAt": "2026-06-11T12:54:40.364Z"
+  },
+  {
+    "id": "batch-cc4e24e3-1baf-4111-88bf-adf796d58cca",
+    "name": "Batch-8",
+    "description": "This Is For testing too.",
+    "isActive": true,
+    "createdAt": "2026-06-12T12:45:45.350Z",
+    "updatedAt": "2026-06-12T12:45:45.350Z"
+  },
+  {
+    "id": "batch-8b973fff-eb0b-43ae-a604-502b5d344cf1",
+    "name": "Batch-10",
+    "description": "This is Also for Testing\n",
+    "isActive": true,
+    "createdAt": "2026-06-12T13:49:21.904Z",
+    "updatedAt": "2026-06-12T13:49:21.904Z"
+  }
+]

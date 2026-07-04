@@ -1,0 +1,137 @@
+[
+  {
+    "id": "att-5a0d6686-f463-42f9-bc0d-f7c9b31ddb97",
+    "studentId": "student-001",
+    "date": "2026-06-17",
+    "status": "late",
+    "isManual": true,
+    "createdAt": "2026-06-17T10:30:46.405Z",
+    "updatedAt": "2026-06-22T10:48:43.092Z"
+  },
+  {
+    "id": "att-fe5b7482-77d6-4cb3-8879-6db445a25ba3",
+    "studentId": "student-001",
+    "date": "2026-06-21",
+    "status": "late",
+    "isManual": true,
+    "createdAt": "2026-06-21T10:21:41.903Z",
+    "updatedAt": "2026-06-21T11:00:08.072Z"
+  },
+  {
+    "id": "att-f5d84aeb-2305-45b7-8a6d-cc6d063b59dc",
+    "studentId": "student-002",
+    "date": "2026-05-06",
+    "status": "late",
+    "isManual": true,
+    "createdAt": "2026-06-21T11:00:39.840Z",
+    "updatedAt": "2026-06-21T11:00:39.840Z"
+  },
+  {
+    "id": "att-e099253a-d502-4840-ba6d-7f0f2ff68784",
+    "studentId": "student-001",
+    "date": "2026-06-22",
+    "status": "late",
+    "isManual": true,
+    "createdAt": "2026-06-22T10:49:11.468Z",
+    "updatedAt": "2026-06-22T11:39:53.501Z"
+  },
+  {
+    "id": "att-a3feebc6-cfb7-4f9d-bc86-0f9307005599",
+    "studentId": "student-002",
+    "date": "2026-06-22",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-06-22T10:49:39.996Z",
+    "updatedAt": "2026-06-22T11:40:40.554Z"
+  },
+  {
+    "id": "att-73034914-54a7-4c4b-a2f4-b96044acab41",
+    "studentId": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "date": "2026-06-22",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-06-22T11:26:50.489Z",
+    "updatedAt": "2026-06-22T11:40:15.458Z"
+  },
+  {
+    "id": "att-d3be9cf7-4874-42ec-87af-4018dbb91d1f",
+    "studentId": "student-001",
+    "date": "2026-06-23",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-06-23T11:59:36.700Z",
+    "updatedAt": "2026-06-23T12:03:48.179Z"
+  },
+  {
+    "id": "att-9fc44d8b-307c-429a-9d8f-878149a72557",
+    "studentId": "student-002",
+    "date": "2026-06-23",
+    "status": "late",
+    "isManual": true,
+    "createdAt": "2026-06-23T12:02:43.459Z",
+    "updatedAt": "2026-06-23T12:04:09.311Z"
+  },
+  {
+    "id": "att-61d6062f-cb9b-4daa-bb56-52da2c91c883",
+    "studentId": "student-001",
+    "date": "2026-06-30",
+    "status": "absent",
+    "isManual": true,
+    "createdAt": "2026-06-30T10:05:15.721Z",
+    "updatedAt": "2026-06-30T12:35:47.227Z"
+  },
+  {
+    "id": "att-0cbe1aff-b7f8-428c-9d17-10e2c3477d87",
+    "studentId": "student-9643845c-2205-426f-9a78-9aa8ce56c941",
+    "date": "2026-06-30",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-06-30T12:31:21.740Z",
+    "updatedAt": "2026-06-30T12:31:21.740Z"
+  },
+  {
+    "id": "att-ab86e0c4-62db-4ce6-9ca4-c02c86b2fc04",
+    "studentId": "student-001",
+    "date": "2026-07-03",
+    "status": "late",
+    "isManual": true,
+    "createdAt": "2026-07-03T12:38:13.589Z",
+    "updatedAt": "2026-07-04T11:20:33.219Z"
+  },
+  {
+    "id": "att-26b8d154-70b4-418a-ba04-f2bf53cd4a18",
+    "studentId": "student-002",
+    "date": "2026-07-03",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-07-03T12:41:09.198Z",
+    "updatedAt": "2026-07-03T12:41:09.198Z"
+  },
+  {
+    "id": "att-acc1163c-6595-4ce0-bab2-8b1ef8371637",
+    "studentId": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "date": "2026-07-03",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-07-03T12:41:15.377Z",
+    "updatedAt": "2026-07-03T12:41:15.377Z"
+  },
+  {
+    "id": "att-5bd1d65e-6ff3-4681-8aea-fb531408bbca",
+    "studentId": "student-9643845c-2205-426f-9a78-9aa8ce56c941",
+    "date": "2026-07-03",
+    "status": "present",
+    "isManual": true,
+    "createdAt": "2026-07-03T12:41:21.024Z",
+    "updatedAt": "2026-07-03T12:41:21.024Z"
+  },
+  {
+    "id": "att-e9a13994-a326-494f-ae9b-f47a99a637b1",
+    "studentId": "student-002",
+    "date": "2026-07-04",
+    "status": "late",
+    "isManual": false,
+    "createdAt": "2026-07-04T11:24:14.963Z",
+    "updatedAt": "2026-07-04T11:24:14.963Z"
+  }
+]

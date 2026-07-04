@@ -1,0 +1,150 @@
+[
+  {
+    "id": "report-ea3dac76-7eab-4602-8bab-cd4956dc0b8d",
+    "studentId": "student-001",
+    "reportDate": "2026-06-17",
+    "whatStudied": "JavaScript promises and async/await patterns",
+    "timeSpent": "3 hours",
+    "whatLearned": "This is for Testing",
+    "challenges": "Understanding the event loop was initially confusing",
+    "progressNotes": "Plan to review error boundaries tomorrow",
+    "status": "approved",
+    "isLate": false,
+    "submittedAt": "2026-06-17T10:30:46.400Z",
+    "reviewedAt": "2026-06-22T10:48:43.092Z",
+    "resubmittedAt": null,
+    "evaluation": {
+      "feedback": "Great reflection. Keep up the detailed notes.",
+      "starRating": 4,
+      "score": 5,
+      "productivity": "excellent",
+      "evaluatedBy": "admin-001",
+      "evaluatedAt": "2026-06-22T10:48:43.092Z"
+    },
+    "revisionHistory": [
+      {
+        "fromStatus": "pending",
+        "toStatus": "approved",
+        "changedAt": "2026-06-22T08:53:18.212Z",
+        "changedBy": "admin-001"
+      }
+    ],
+    "createdAt": "2026-06-17T10:30:46.400Z",
+    "updatedAt": "2026-06-22T10:48:43.092Z"
+  },
+  {
+    "id": "report-4f9e315e-35ad-4b9d-a3d6-a307b1e8faf9",
+    "studentId": "student-001",
+    "reportDate": "2026-06-23",
+    "whatStudied": "JavaScript promises and async/await patterns",
+    "timeSpent": "3 hours",
+    "whatLearned": "How to chain promises and handle errors properly",
+    "challenges": "Understanding the event loop was initially confusing",
+    "progressNotes": "Plan to review error boundaries tomorrow",
+    "status": "rejected",
+    "isLate": true,
+    "submittedAt": "2026-06-23T11:59:36.697Z",
+    "reviewedAt": "2026-07-04T11:35:16.191Z",
+    "resubmittedAt": null,
+    "evaluation": {
+      "feedback": "",
+      "starRating": 2,
+      "score": 2,
+      "productivity": "low",
+      "evaluatedBy": "admin-001",
+      "evaluatedAt": "2026-07-04T11:35:16.191Z"
+    },
+    "revisionHistory": [
+      {
+        "fromStatus": "pending",
+        "toStatus": "approved",
+        "changedAt": "2026-06-23T12:03:48.179Z",
+        "changedBy": "admin-001"
+      },
+      {
+        "fromStatus": "approved",
+        "toStatus": "needs_revision",
+        "changedAt": "2026-07-04T11:17:45.656Z",
+        "changedBy": "admin-001"
+      },
+      {
+        "fromStatus": "needs_revision",
+        "toStatus": "rejected",
+        "changedAt": "2026-07-04T11:35:16.191Z",
+        "changedBy": "admin-001"
+      }
+    ],
+    "createdAt": "2026-06-23T11:59:36.697Z",
+    "updatedAt": "2026-07-04T11:35:16.191Z"
+  },
+  {
+    "id": "report-56a745fe-129a-4d6f-8992-386f36249c4d",
+    "studentId": "student-002",
+    "reportDate": "2026-06-23",
+    "whatStudied": "fffffffffffffffff",
+    "timeSpent": "2 hours",
+    "whatLearned": "ffffffffffffffffffff",
+    "challenges": "ffffffffffffffff",
+    "progressNotes": "ffffffffffffff",
+    "status": "approved",
+    "isLate": true,
+    "submittedAt": "2026-06-23T12:02:43.458Z",
+    "reviewedAt": "2026-06-23T12:15:25.279Z",
+    "resubmittedAt": null,
+    "evaluation": {
+      "feedback": "",
+      "starRating": 2,
+      "score": 2,
+      "productivity": "low",
+      "evaluatedBy": "admin-001",
+      "evaluatedAt": "2026-06-23T12:15:25.279Z"
+    },
+    "revisionHistory": [
+      {
+        "fromStatus": "pending",
+        "toStatus": "rejected",
+        "changedAt": "2026-06-23T12:04:09.311Z",
+        "changedBy": "admin-001"
+      },
+      {
+        "fromStatus": "rejected",
+        "toStatus": "approved",
+        "changedAt": "2026-06-23T12:15:25.279Z",
+        "changedBy": "admin-001"
+      }
+    ],
+    "createdAt": "2026-06-23T12:02:43.458Z",
+    "updatedAt": "2026-06-23T12:15:25.279Z"
+  },
+  {
+    "id": "report-8a31f3dc-0f6b-4ca3-8f96-679cc5df6d79",
+    "studentId": "student-002",
+    "reportDate": "2026-07-04",
+    "whatStudied": "about java script",
+    "timeSpent": "1 hour",
+    "whatLearned": "1st class Functions",
+    "challenges": "nothing",
+    "progressNotes": "50% complet",
+    "status": "approved",
+    "isLate": true,
+    "submittedAt": "2026-07-04T11:24:14.960Z",
+    "reviewedAt": "2026-07-04T11:34:54.432Z",
+    "resubmittedAt": null,
+    "evaluation": {
+      "feedback": "",
+      "starRating": 0,
+      "evaluatedBy": "admin-001",
+      "evaluatedAt": "2026-07-04T11:34:54.432Z"
+    },
+    "revisionHistory": [
+      {
+        "fromStatus": "pending",
+        "toStatus": "approved",
+        "changedAt": "2026-07-04T11:34:54.432Z",
+        "changedBy": "admin-001"
+      }
+    ],
+    "createdAt": "2026-07-04T11:24:14.960Z",
+    "updatedAt": "2026-07-04T11:34:54.432Z"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "admin-001",
+    "name": "Hassan Sattar",
+    "email": "hassansattar147@gmail.com",
+    "password": "$2b$10$WO.izIoONxR.tJ.GwIqgVOU7yO2kW9wZghdU4S0bZ8t/UOfMWLcae",
+    "role": "admin",
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "student-001",
+    "name": "Ahmad Gul",
+    "email": "ahmad.gul@tensaidevs.com",
+    "password": "$2b$10$N457eonV6qhkt0MHREBQje2ceNo7KXeORYtwHeNaY/Y0PEae71b/K",
+    "role": "student",
+    "isActive": true,
+    "batchId": "batch-001",
+    "courseId": "course-001",
+    "groupId": "group-001",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2026-07-04T11:22:43.125Z"
+  },
+  {
+    "id": "student-002",
+    "name": "Muhib ur Rehman",
+    "email": "muhib@tensaidevs.com",
+    "password": "$2b$10$N457eonV6qhkt0MHREBQje2ceNo7KXeORYtwHeNaY/Y0PEae71b/K",
+    "role": "student",
+    "isActive": true,
+    "batchId": "batch-001",
+    "courseId": "course-002",
+    "groupId": "group-003",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "student-1fc88d44-fa45-4491-b8ed-4961d4e3d7fd",
+    "name": "Ejaz Khan",
+    "email": "Ejazkhan@gmail.com",
+    "password": "$2b$10$cb3F1JdT9azYVZmoFad1YuQpReEgPERzLbZYie6BwIMbSR0BhKxQG",
+    "role": "student",
+    "isActive": true,
+    "batchId": "batch-8b973fff-eb0b-43ae-a604-502b5d344cf1",
+    "courseId": "course-872f9c20-587c-413c-8970-2200481b2086",
+    "groupId": "group-13112147-a644-4d6e-af10-a95a261e8446",
+    "createdAt": "2026-06-22T10:52:54.746Z",
+    "updatedAt": "2026-06-22T10:52:54.746Z"
+  },
+  {
+    "id": "student-9643845c-2205-426f-9a78-9aa8ce56c941",
+    "name": "Saqib Khan",
+    "email": "s@gmail.com",
+    "password": "$2b$10$sJtvTsBZPrSqtJ/3.KTepOpiVyf8WI/sZypOFGyq.X/CGaERtctaG",
+    "role": "student",
+    "isActive": true,
+    "batchId": "batch-ce51fd2b-3336-4484-a4de-7e3d2a35b720",
+    "courseId": "course-001",
+    "groupId": "group-7303f9a2-9073-41fb-bb32-afb670b66be0",
+    "createdAt": "2026-06-30T12:25:57.069Z",
+    "updatedAt": "2026-07-03T12:08:02.443Z"
+  },
+  {
+    "id": "student-9343b4bf-0800-4b38-b28d-0c40390e9292",
+    "name": "Zain",
+    "email": "z@gmail.com",
+    "password": "$2b$10$zkOzUIb4/c5mipOwr5QdC./RnbcHi6y6hxCHIHS66wFAUoK.Iqu1W",
+    "role": "student",
+    "isActive": true,
+    "batchId": "batch-ce51fd2b-3336-4484-a4de-7e3d2a35b720",
+    "courseId": "course-001",
+    "groupId": "group-7303f9a2-9073-41fb-bb32-afb670b66be0",
+    "createdAt": "2026-07-03T12:56:44.291Z",
+    "updatedAt": "2026-07-03T12:56:44.291Z"
+  }
+]

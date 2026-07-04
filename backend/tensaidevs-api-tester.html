@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TensaiDevs API Tester</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --bg2: #181b24;
+    --bg3: #1e2130;
+    --bg4: #252840;
+    --border: #2e3350;
+    --border2: #3d4266;
+    --text: #e8eaf6;
+    --text2: #9fa3c0;
+    --text3: #6b6f8a;
+    --accent: #6c63ff;
+    --accent2: #4e46d4;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --teal: #14b8a6;
+    --blue: #3b82f6;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* LAYOUT */
+  .app { display: flex; height: 100vh; overflow: hidden; }
+
+  .sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .sidebar-header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+
+  .sidebar-header p {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  .sidebar-search {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .sidebar-search input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+  }
+
+  .sidebar-search input:focus { border-color: var(--accent); }
+
+  .sidebar-nav {
+    overflow-y: auto;
+    flex: 1;
+    padding: 8px 0;
+  }
+
+  .nav-group { margin-bottom: 4px; }
+
+  .nav-group-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text3);
+    padding: 8px 14px 4px;
+    text-transform: uppercase;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    cursor: pointer;
+    border-radius: 0;
+    transition: background 0.1s;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-item:hover { background: var(--bg3); }
+  .nav-item.active { background: var(--bg4); border-left-color: var(--accent); }
+
+  .method-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 4px;
+    min-width: 38px;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .m-get { background: #0d3b26; color: var(--green); }
+  .m-post { background: #1a2e5a; color: #93c5fd; }
+  .m-put { background: #3b2000; color: var(--yellow); }
+  .m-delete { background: #3b0000; color: #fca5a5; }
+  .m-patch { background: #2d1b5a; color: #c4b5fd; }
+
+  .nav-item-label {
+    font-size: 12px;
+    color: var(--text2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-item.active .nav-item-label { color: var(--text); }
+
+  /* MAIN PANEL */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* AUTH BAR */
+  .auth-bar {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .auth-bar label { font-size: 12px; color: var(--text3); }
+
+  .auth-bar input {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 5px 10px;
+    color: var(--text);
+    font-size: 12px;
+    outline: none;
+    width: 160px;
+  }
+
+  .auth-bar input:focus { border-color: var(--accent); }
+
+  .btn {
+    padding: 5px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.1s;
+    white-space: nowrap;
+  }
+
+  .btn:hover { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+
+  .btn-danger { border-color: #3b1010; color: #fca5a5; }
+  .btn-danger:hover { background: #3b1010; color: #fca5a5; }
+
+  .auth-status {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .auth-status.logged-in { background: #0d3b26; color: var(--green); }
+  .auth-status.logged-out { background: #3b0000; color: #fca5a5; }
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .request-panel {
+    width: 50%;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .request-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .request-header h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .request-header p {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .url-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .url-method {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .url-input {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    color: var(--text);
+    font-size: 12px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    outline: none;
+  }
+
+  .url-input:focus { border-color: var(--accent); }
+
+  .request-body-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .field-group { display: flex; flex-direction: column; gap: 4px; }
+
+  .field-group label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .field-group input,
+  .field-group select,
+  .field-group textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 7px 10px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.15s;
+  }
+
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus { border-color: var(--accent); }
+
+  .field-group select { cursor: pointer; }
+
+  .field-group textarea {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .send-row {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .send-row .btn-primary { padding: 7px 20px; font-size: 13px; }
+
+  .send-status { font-size: 12px; color: var(--text3); }
+
+  /* RESPONSE */
+  .response-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .response-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .response-header h3 { font-size: 13px; font-weight: 600; color: var(--text); }
+
+  .status-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  .status-2xx { background: #0d3b26; color: var(--green); }
+  .status-4xx { background: #3b2000; color: var(--yellow); }
+  .status-5xx { background: #3b0000; color: #fca5a5; }
+
+  .response-time { font-size: 11px; color: var(--text3); margin-left: auto; }
+
+  .response-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+  }
+
+  .response-body pre {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: var(--text);
+  }
+
+  .response-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text3);
+    gap: 8px;
+  }
+
+  .response-placeholder span { font-size: 32px; }
+  .response-placeholder p { font-size: 13px; }
+
+  /* JSON SYNTAX HIGHLIGHT */
+  .json-key { color: #93c5fd; }
+  .json-string { color: #86efac; }
+  .json-number { color: #fcd34d; }
+  .json-bool { color: #f9a8d4; }
+  .json-null { color: #94a3b8; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  .copy-btn {
+    margin-left: auto;
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .section-divider {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  .info-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .info-box strong { color: var(--text); font-weight: 500; }
+
+  .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-right: 4px; font-weight: 500; }
+  .tag-auth { background: #1a1a3a; color: #a5b4fc; }
+  .tag-admin { background: #3b2000; color: var(--yellow); }
+  .tag-student { background: #0d3b26; color: var(--green); }
+
+  .base-url-bar {
+    padding: 8px 16px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .base-url-bar label { font-size: 11px; color: var(--text3); white-space: nowrap; }
+
+  .base-url-bar input {
+    flex: 1;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px 8px;
+    color: var(--text);
+    font-size: 12px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    outline: none;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--border2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text2);
+    cursor: pointer;
+  }
+
+  .checkbox-row input { cursor: pointer; accent-color: var(--accent); }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text3);
+    font-size: 13px;
+  }
+
+  @media (max-width: 900px) {
+    .sidebar { width: 220px; min-width: 220px; }
+    .content { flex-direction: column; }
+    .request-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); height: 50%; }
+    .response-panel { width: 100%; height: 50%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>TensaiDevs API Tester</h1>
+      <p>All endpoints in one place</p>
+    </div>
+    <div class="sidebar-search">
+      <input type="text" id="navSearch" placeholder="Search endpoints..." oninput="filterNav(this.value)">
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav"></nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- AUTH BAR -->
+    <div class="auth-bar">
+      <label>Email</label>
+      <input type="text" id="authEmail" value="hassansattar147@gmail.com" placeholder="Email">
+      <label>Password</label>
+      <input type="password" id="authPassword" value="admin123" placeholder="Password">
+      <button class="btn btn-primary" onclick="doLogin()">Login</button>
+      <button class="btn btn-danger" onclick="doLogout()">Logout</button>
+      <span class="auth-status logged-out" id="authStatus">Not logged in</span>
+      <button class="btn" onclick="switchToStudent()" style="font-size:11px;">Use Student Creds</button>
+      <button class="btn" onclick="switchToAdmin()" style="font-size:11px;">Use Admin Creds</button>
+    </div>
+
+    <!-- BASE URL -->
+    <div class="base-url-bar">
+      <label>Base URL</label>
+      <input type="text" id="baseUrl" value="http://localhost:3000">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- REQUEST PANEL -->
+      <div class="request-panel">
+        <div class="request-header">
+          <h2 id="reqTitle">Select an endpoint</h2>
+          <p id="reqDesc" style="color:var(--text3);">Choose an endpoint from the left sidebar to begin testing.</p>
+          <div class="url-bar">
+            <span class="url-method method-badge" id="reqMethod">GET</span>
+            <input type="text" class="url-input" id="reqUrl" value="" placeholder="/api/...">
+          </div>
+        </div>
+        <div class="request-body-area" id="requestBodyArea">
+          <div class="empty-state">Select an endpoint to configure and send a request.</div>
+        </div>
+        <div class="send-row">
+          <button class="btn btn-primary" onclick="sendRequest()">Send Request</button>
+          <button class="btn" onclick="clearResponse()">Clear</button>
+          <span class="send-status" id="sendStatus"></span>
+        </div>
+      </div>
+
+      <!-- RESPONSE PANEL -->
+      <div class="response-panel">
+        <div class="response-header">
+          <h3>Response</h3>
+          <span class="status-pill" id="respStatus" style="display:none;"></span>
+          <span class="response-time" id="respTime"></span>
+          <button class="btn copy-btn" onclick="copyResponse()">Copy</button>
+        </div>
+        <div class="response-body" id="responseBody">
+          <div class="response-placeholder">
+            <span>&#8680;</span>
+            <p>Send a request to see the response here</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+let token = '';
+let currentEndpoint = null;
+
+const BASE_CREDS = {
+  admin: { email: 'hassansattar147@gmail.com', password: 'admin123' },
+  student: { email: 'ahmad.gul@tensaidevs.com', password: 'student123' }
+};
+
+function switchToAdmin() {
+  document.getElementById('authEmail').value = BASE_CREDS.admin.email;
+  document.getElementById('authPassword').value = BASE_CREDS.admin.password;
+}
+
+function switchToStudent() {
+  document.getElementById('authEmail').value = BASE_CREDS.student.email;
+  document.getElementById('authPassword').value = BASE_CREDS.student.password;
+}
+
+function getBase() {
+  return document.getElementById('baseUrl').value.replace(/\/$/, '');
+}
+
+async function doLogin() {
+  const email = document.getElementById('authEmail').value;
+  const password = document.getElementById('authPassword').value;
+  document.getElementById('sendStatus').innerHTML = '<span class="spinner"></span>';
+  try {
+    const res = await fetch(getBase() + '/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (data.success && data.data && data.data.token) {
+      token = data.data.token;
+      const role = data.data.user.role;
+      const name = data.data.user.name;
+      document.getElementById('authStatus').textContent = name + ' (' + role + ')';
+      document.getElementById('authStatus').className = 'auth-status logged-in';
+      displayResponse(res.status, data, 0);
+    } else {
+      document.getElementById('authStatus').textContent = 'Login failed';
+      document.getElementById('authStatus').className = 'auth-status logged-out';
+      displayResponse(res.status, data, 0);
+    }
+  } catch (e) {
+    showError('Login failed: ' + e.message);
+  }
+  document.getElementById('sendStatus').textContent = '';
+}
+
+function doLogout() {
+  token = '';
+  document.getElementById('authStatus').textContent = 'Not logged in';
+  document.getElementById('authStatus').className = 'auth-status logged-out';
+  clearResponse();
+}
+
+// ---- ENDPOINTS DEFINITION ----
+
+const endpoints = [
+  {
+    group: 'Auth',
+    items: [
+      {
+        id: 'login', label: 'Login', method: 'POST', path: '/api/auth/login',
+        desc: 'Authenticate and receive a JWT token. Works for both admin and student accounts.',
+        auth: false,
+        role: null,
+        fields: [
+          { name: 'email', label: 'Email', type: 'text', default: 'hassansattar147@gmail.com' },
+          { name: 'password', label: 'Password', type: 'password', default: 'admin123' }
+        ]
+      },
+      {
+        id: 'getMe', label: 'Get My Profile', method: 'GET', path: '/api/auth/me',
+        desc: 'Returns the profile of the currently authenticated user.',
+        auth: true, role: 'all', fields: []
+      },
+      {
+        id: 'changePassword', label: 'Change Password', method: 'PUT', path: '/api/auth/change-password',
+        desc: 'Change the password of the currently logged in user.',
+        auth: true, role: 'all',
+        fields: [
+          { name: 'currentPassword', label: 'Current Password', type: 'password', default: 'admin123' },
+          { name: 'newPassword', label: 'New Password', type: 'password', default: 'newpass123' }
+        ]
+      },
+      {
+        id: 'resetPassword', label: 'Admin Reset Password', method: 'PUT', path: '/api/auth/reset-password/:studentId',
+        desc: 'Admin resets a student password. Replace :studentId in the URL.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        fields: [
+          { name: 'newPassword', label: 'New Password', type: 'password', default: 'resetpass123' }
+        ]
+      }
+    ]
+  },
+  {
+    group: 'Settings',
+    items: [
+      {
+        id: 'getSettings', label: 'Get Settings', method: 'GET', path: '/api/settings',
+        desc: 'Returns current system settings including the submission deadline.',
+        auth: true, role: 'all', fields: []
+      },
+      {
+        id: 'updateDeadline', label: 'Update Deadline', method: 'PUT', path: '/api/settings/deadline',
+        desc: 'Admin updates the daily submission deadline. Format: HH:MM in 24-hour time.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'submissionDeadline', label: 'Deadline (HH:MM)', type: 'text', default: '23:00' }
+        ]
+      }
+    ]
+  },
+  {
+    group: 'Students',
+    items: [
+      {
+        id: 'listStudents', label: 'List Students', method: 'GET', path: '/api/students',
+        desc: 'Returns all students. Supports filters: name, batchId, courseId, groupId, tag, isActive, page, limit.',
+        auth: true, role: 'admin',
+        queryParams: [
+          { name: 'name', label: 'Name Filter', default: '' },
+          { name: 'batchId', label: 'Batch ID', default: '' },
+          { name: 'courseId', label: 'Course ID', default: '' },
+          { name: 'groupId', label: 'Group ID', default: '' },
+          { name: 'tag', label: 'Tag Name', default: '' },
+          { name: 'isActive', label: 'Is Active (true/false)', default: '' },
+          { name: 'page', label: 'Page', default: '1' },
+          { name: 'limit', label: 'Limit', default: '20' }
+        ]
+      },
+      {
+        id: 'getStudent', label: 'Get Student', method: 'GET', path: '/api/students/:studentId',
+        desc: 'Returns a single student by their ID.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        fields: []
+      },
+      {
+        id: 'createStudent', label: 'Create Student', method: 'POST', path: '/api/students',
+        desc: 'Admin creates a new student account and assigns them to a batch, course, and group.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'name', label: 'Full Name', type: 'text', default: 'Test Student' },
+          { name: 'email', label: 'Email', type: 'text', default: 'test.student@tensaidevs.com' },
+          { name: 'password', label: 'Password', type: 'text', default: 'student123' },
+          { name: 'batchId', label: 'Batch ID', type: 'text', default: 'batch-001' },
+          { name: 'courseId', label: 'Course ID', type: 'text', default: 'course-001' },
+          { name: 'groupId', label: 'Group ID', type: 'text', default: 'group-001' }
+        ]
+      },
+      {
+        id: 'updateStudent', label: 'Update Student', method: 'PUT', path: '/api/students/:studentId',
+        desc: 'Admin updates student name or reassigns them to a different group.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        fields: [
+          { name: 'name', label: 'New Name', type: 'text', default: 'Ahmad Gul Updated' },
+          { name: 'batchId', label: 'Batch ID', type: 'text', default: '' },
+          { name: 'courseId', label: 'Course ID', type: 'text', default: '' },
+          { name: 'groupId', label: 'Group ID', type: 'text', default: '' }
+        ]
+      },
+      {
+        id: 'toggleStudent', label: 'Toggle Student Status', method: 'PATCH', path: '/api/students/:studentId/toggle-status',
+        desc: 'Activate or deactivate a student account. Toggling preserves all historical data.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        fields: []
+      }
+    ]
+  },
+  {
+    group: 'Program (Batches, Courses, Groups)',
+    items: [
+      {
+        id: 'listBatches', label: 'List Batches', method: 'GET', path: '/api/program/batches',
+        desc: 'Returns all batches with their assigned courses.',
+        auth: true, role: 'admin', fields: []
+      },
+      {
+        id: 'getBatch', label: 'Get Batch', method: 'GET', path: '/api/program/batches/:batchId',
+        desc: 'Returns a single batch by ID.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'batchId', label: 'Batch ID', default: 'batch-001' }],
+        fields: []
+      },
+      {
+        id: 'createBatch', label: 'Create Batch', method: 'POST', path: '/api/program/batches',
+        desc: 'Create a new batch. Optionally carry over courses from a previous batch using carryCoursesFrom.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'name', label: 'Batch Name', type: 'text', default: 'Batch 2' },
+          { name: 'description', label: 'Description', type: 'text', default: 'Second intake' },
+          { name: 'carryCoursesFrom', label: 'Copy Courses From Batch ID (optional)', type: 'text', default: 'batch-001' }
+        ]
+      },
+      {
+        id: 'assignCourseToBatch', label: 'Assign Course to Batch', method: 'POST', path: '/api/program/batches/:batchId/courses',
+        desc: 'Assign an existing course to a specific batch.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'batchId', label: 'Batch ID', default: 'batch-001' }],
+        fields: [
+          { name: 'courseId', label: 'Course ID', type: 'text', default: 'course-001' }
+        ]
+      },
+      {
+        id: 'listCourses', label: 'List Courses', method: 'GET', path: '/api/program/courses',
+        desc: 'Returns all available courses.',
+        auth: true, role: 'admin', fields: []
+      },
+      {
+        id: 'createCourse', label: 'Create Course', method: 'POST', path: '/api/program/courses',
+        desc: 'Create a new course. Domain must be: programming, designing, video_editing, or professional_skills.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'name', label: 'Course Name', type: 'text', default: 'Digital Marketing' },
+          { name: 'description', label: 'Description', type: 'text', default: 'Social media and content strategy' },
+          { name: 'domain', label: 'Domain', type: 'select', options: ['programming', 'designing', 'video_editing', 'professional_skills'], default: 'professional_skills' }
+        ]
+      },
+      {
+        id: 'listGroups', label: 'List Groups', method: 'GET', path: '/api/program/groups',
+        desc: 'Returns all groups. Optionally filter by batchId and/or courseId.',
+        auth: true, role: 'admin',
+        queryParams: [
+          { name: 'batchId', label: 'Batch ID', default: 'batch-001' },
+          { name: 'courseId', label: 'Course ID', default: '' }
+        ]
+      },
+      {
+        id: 'createGroup', label: 'Create Group', method: 'POST', path: '/api/program/groups',
+        desc: 'Create a new group inside a specific batch and course.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'name', label: 'Group Name', type: 'text', default: 'Group C' },
+          { name: 'batchId', label: 'Batch ID', type: 'text', default: 'batch-001' },
+          { name: 'courseId', label: 'Course ID', type: 'text', default: 'course-001' }
+        ]
+      }
+    ]
+  },
+  {
+    group: 'Reports (Student)',
+    items: [
+      {
+        id: 'submitReport', label: 'Submit / Save Draft Report', method: 'POST', path: '/api/reports',
+        desc: 'Student submits a daily report or saves it as a draft. Set isDraft to true to save as draft. All fields required for submission.',
+        auth: true, role: 'student',
+        fields: [
+          { name: 'reportDate', label: 'Report Date (YYYY-MM-DD)', type: 'text', default: new Date().toISOString().split('T')[0] },
+          { name: 'whatStudied', label: 'What I Studied', type: 'textarea', default: 'JavaScript promises and async/await patterns' },
+          { name: 'timeSpent', label: 'Time Spent', type: 'text', default: '3 hours' },
+          { name: 'whatLearned', label: 'What I Learned', type: 'textarea', default: 'How to chain promises and handle errors properly' },
+          { name: 'challenges', label: 'Challenges Faced', type: 'textarea', default: 'Understanding the event loop was initially confusing' },
+          { name: 'progressNotes', label: 'Progress Notes', type: 'textarea', default: 'Plan to review error boundaries tomorrow' },
+          { name: 'isDraft', label: 'Save as Draft', type: 'checkbox', default: false }
+        ]
+      },
+      {
+        id: 'getMyReports', label: 'My Report History', method: 'GET', path: '/api/reports/my',
+        desc: 'Returns all reports for the logged in student. Supports filters: status, fromDate, toDate, page, limit.',
+        auth: true, role: 'student',
+        queryParams: [
+          { name: 'status', label: 'Status (pending/approved/rejected/needs_revision/draft)', default: '' },
+          { name: 'fromDate', label: 'From Date (YYYY-MM-DD)', default: '' },
+          { name: 'toDate', label: 'To Date (YYYY-MM-DD)', default: '' },
+          { name: 'page', label: 'Page', default: '1' },
+          { name: 'limit', label: 'Limit', default: '20' }
+        ]
+      },
+      {
+        id: 'getMyReport', label: 'Get My Report by ID', method: 'GET', path: '/api/reports/my/:reportId',
+        desc: 'Returns a single report belonging to the currently logged in student.',
+        auth: true, role: 'student',
+        urlParams: [{ name: 'reportId', label: 'Report ID', default: '' }],
+        fields: []
+      }
+    ]
+  },
+  {
+    group: 'Reports (Admin)',
+    items: [
+      {
+        id: 'adminListReports', label: 'List All Reports', method: 'GET', path: '/api/reports',
+        desc: 'Admin view of all submitted reports. Supports filters: studentId, batchId, courseId, groupId, status, fromDate, toDate, isLate, minScore, maxScore, page, limit.',
+        auth: true, role: 'admin',
+        queryParams: [
+          { name: 'studentId', label: 'Student ID', default: '' },
+          { name: 'batchId', label: 'Batch ID', default: '' },
+          { name: 'courseId', label: 'Course ID', default: '' },
+          { name: 'groupId', label: 'Group ID', default: '' },
+          { name: 'status', label: 'Status', default: '' },
+          { name: 'fromDate', label: 'From Date', default: '' },
+          { name: 'toDate', label: 'To Date', default: '' },
+          { name: 'isLate', label: 'Is Late (true/false)', default: '' },
+          { name: 'minScore', label: 'Min Score', default: '' },
+          { name: 'maxScore', label: 'Max Score', default: '' },
+          { name: 'page', label: 'Page', default: '1' },
+          { name: 'limit', label: 'Limit', default: '20' }
+        ]
+      },
+      {
+        id: 'adminGetReport', label: 'Get Report by ID', method: 'GET', path: '/api/reports/:reportId',
+        desc: 'Admin retrieves a specific report by its ID.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'reportId', label: 'Report ID', default: '' }],
+        fields: []
+      },
+      {
+        id: 'adminEvaluateReport', label: 'Evaluate Report', method: 'PUT', path: '/api/reports/:reportId/evaluate',
+        desc: 'Admin evaluates a student report. Status is required. All other fields are optional.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'reportId', label: 'Report ID', default: '' }],
+        fields: [
+          { name: 'status', label: 'Status', type: 'select', options: ['pending', 'needs_revision', 'approved', 'rejected'], default: 'approved' },
+          { name: 'feedback', label: 'Written Feedback', type: 'textarea', default: 'Great reflection. Keep up the detailed notes.' },
+          { name: 'starRating', label: 'Star Rating (1-5)', type: 'number', default: '4' },
+          { name: 'score', label: 'Score (1-5)', type: 'number', default: '4' },
+          { name: 'attendance', label: 'Attendance', type: 'select', options: ['', 'present', 'absent', 'late'], default: 'present' },
+          { name: 'productivity', label: 'Productivity', type: 'select', options: ['', 'low', 'average', 'good', 'excellent'], default: 'good' }
+        ]
+      }
+    ]
+  },
+  {
+    group: 'Attendance',
+    items: [
+      {
+        id: 'getMyAttendance', label: 'My Attendance', method: 'GET', path: '/api/attendance/my',
+        desc: 'Returns attendance records for the currently logged in student. Filter by month and year or by date range.',
+        auth: true, role: 'student',
+        queryParams: [
+          { name: 'month', label: 'Month (1-12)', default: new Date().getMonth() + 1 },
+          { name: 'year', label: 'Year', default: new Date().getFullYear() },
+          { name: 'fromDate', label: 'From Date (overrides month/year)', default: '' },
+          { name: 'toDate', label: 'To Date', default: '' }
+        ]
+      },
+      {
+        id: 'adminGetAttendance', label: 'Get All Attendance', method: 'GET', path: '/api/attendance',
+        desc: 'Admin retrieves attendance records. Filter by studentId, month, year, or date range.',
+        auth: true, role: 'admin',
+        queryParams: [
+          { name: 'studentId', label: 'Student ID', default: 'student-001' },
+          { name: 'month', label: 'Month (1-12)', default: new Date().getMonth() + 1 },
+          { name: 'year', label: 'Year', default: new Date().getFullYear() },
+          { name: 'fromDate', label: 'From Date', default: '' },
+          { name: 'toDate', label: 'To Date', default: '' }
+        ]
+      },
+      {
+        id: 'setAttendance', label: 'Set Attendance Manually', method: 'POST', path: '/api/attendance',
+        desc: 'Admin manually marks or overrides attendance for any student on any date.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'studentId', label: 'Student ID', type: 'text', default: 'student-001' },
+          { name: 'date', label: 'Date (YYYY-MM-DD)', type: 'text', default: new Date().toISOString().split('T')[0] },
+          { name: 'status', label: 'Status', type: 'select', options: ['present', 'absent', 'late'], default: 'absent' }
+        ]
+      }
+    ]
+  },
+  {
+    group: 'Tags (Admin Only)',
+    items: [
+      {
+        id: 'listTags', label: 'List Tags', method: 'GET', path: '/api/tags',
+        desc: 'Returns all internal tags available in the system.',
+        auth: true, role: 'admin', fields: []
+      },
+      {
+        id: 'createTag', label: 'Create Tag', method: 'POST', path: '/api/tags',
+        desc: 'Create a new custom internal tag.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'name', label: 'Tag Name', type: 'text', default: 'Rising Star' }
+        ]
+      },
+      {
+        id: 'renameTag', label: 'Rename Tag', method: 'PUT', path: '/api/tags/:tagId',
+        desc: 'Rename an existing tag.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'tagId', label: 'Tag ID', default: 'tag-001' }],
+        fields: [
+          { name: 'name', label: 'New Name', type: 'text', default: 'Top Performer' }
+        ]
+      },
+      {
+        id: 'deleteTag', label: 'Delete Tag', method: 'DELETE', path: '/api/tags/:tagId',
+        desc: 'Delete a tag. This also removes it from all students it was assigned to.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'tagId', label: 'Tag ID', default: 'tag-001' }],
+        fields: []
+      },
+      {
+        id: 'assignTag', label: 'Assign Tag to Student', method: 'POST', path: '/api/tags/assign',
+        desc: 'Assign an existing tag to a student.',
+        auth: true, role: 'admin',
+        fields: [
+          { name: 'studentId', label: 'Student ID', type: 'text', default: 'student-001' },
+          { name: 'tagId', label: 'Tag ID', type: 'text', default: 'tag-001' }
+        ]
+      },
+      {
+        id: 'removeTagFromStudent', label: 'Remove Tag from Student', method: 'DELETE', path: '/api/tags/assign/:studentId/:tagId',
+        desc: 'Remove a tag assignment from a student.',
+        auth: true, role: 'admin',
+        urlParams: [
+          { name: 'studentId', label: 'Student ID', default: 'student-001' },
+          { name: 'tagId', label: 'Tag ID', default: 'tag-001' }
+        ],
+        fields: []
+      },
+      {
+        id: 'getStudentTags', label: 'Get Student Tags', method: 'GET', path: '/api/tags/student/:studentId',
+        desc: 'Returns all tags assigned to a specific student.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        fields: []
+      }
+    ]
+  },
+  {
+    group: 'Analytics',
+    items: [
+      {
+        id: 'adminDashboard', label: 'Admin Dashboard', method: 'GET', path: '/api/analytics/dashboard',
+        desc: 'Returns dashboard summary: pending count, needs revision count, missing reports today, total active students, and deadline.',
+        auth: true, role: 'admin', fields: []
+      },
+      {
+        id: 'allStudentsOverview', label: 'All Students Overview', method: 'GET', path: '/api/analytics/students',
+        desc: 'Returns current week and month performance summary for all active students.',
+        auth: true, role: 'admin',
+        queryParams: [
+          { name: 'batchId', label: 'Batch ID', default: '' },
+          { name: 'courseId', label: 'Course ID', default: '' },
+          { name: 'groupId', label: 'Group ID', default: '' },
+          { name: 'sortBy', label: 'Sort By (name/score/completion)', default: 'name' },
+          { name: 'page', label: 'Page', default: '1' },
+          { name: 'limit', label: 'Limit', default: '20' }
+        ]
+      },
+      {
+        id: 'studentWeekly', label: 'Student Weekly Summary', method: 'GET', path: '/api/analytics/students/:studentId/weekly',
+        desc: 'Returns weekly performance summary for a specific student. weekOffset=0 is current week, 1 is last week.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        queryParams: [{ name: 'weekOffset', label: 'Week Offset (0=current, 1=last week)', default: '0' }]
+      },
+      {
+        id: 'studentMonthly', label: 'Student Monthly Summary', method: 'GET', path: '/api/analytics/students/:studentId/monthly',
+        desc: 'Returns monthly performance summary with weekly breakdown for a specific student.',
+        auth: true, role: 'admin',
+        urlParams: [{ name: 'studentId', label: 'Student ID', default: 'student-001' }],
+        queryParams: [{ name: 'monthOffset', label: 'Month Offset (0=current, 1=last month)', default: '0' }]
+      },
+      {
+        id: 'myWeekly', label: 'My Weekly Summary', method: 'GET', path: '/api/analytics/my/weekly',
+        desc: 'Returns the weekly performance summary for the currently logged in student.',
+        auth: true, role: 'student',
+        queryParams: [{ name: 'weekOffset', label: 'Week Offset (0=current, 1=last week)', default: '0' }]
+      },
+      {
+        id: 'myMonthly', label: 'My Monthly Summary', method: 'GET', path: '/api/analytics/my/monthly',
+        desc: 'Returns the monthly performance summary for the currently logged in student.',
+        auth: true, role: 'student',
+        queryParams: [{ name: 'monthOffset', label: 'Month Offset (0=current)', default: '0' }]
+      }
+    ]
+  }
+];
+
+// ---- RENDER SIDEBAR ----
+
+function buildNav() {
+  const nav = document.getElementById('sidebarNav');
+  nav.innerHTML = '';
+  endpoints.forEach(group => {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'nav-group';
+    groupEl.dataset.group = group.group;
+
+    const label = document.createElement('div');
+    label.className = 'nav-group-label';
+    label.textContent = group.group;
+    groupEl.appendChild(label);
+
+    group.items.forEach(item => {
+      const el = document.createElement('div');
+      el.className = 'nav-item';
+      el.dataset.id = item.id;
+      el.dataset.label = item.label.toLowerCase();
+      el.dataset.method = item.method.toLowerCase();
+      el.innerHTML = `<span class="method-badge m-${item.method.toLowerCase()}">${item.method}</span>
+        <span class="nav-item-label">${item.label}</span>`;
+      el.onclick = () => selectEndpoint(item);
+      groupEl.appendChild(el);
+    });
+
+    nav.appendChild(groupEl);
+  });
+}
+
+function filterNav(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.nav-item').forEach(el => {
+    const match = el.dataset.label.includes(q) || el.dataset.method.includes(q);
+    el.style.display = match ? '' : 'none';
+  });
+  document.querySelectorAll('.nav-group').forEach(g => {
+    const visible = [...g.querySelectorAll('.nav-item')].some(i => i.style.display !== 'none');
+    g.style.display = visible ? '' : 'none';
+  });
+}
+
+// ---- SELECT ENDPOINT ----
+
+function selectEndpoint(ep) {
+  currentEndpoint = ep;
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === ep.id);
+  });
+
+  document.getElementById('reqTitle').textContent = ep.label;
+  document.getElementById('reqDesc').textContent = ep.desc;
+
+  const mEl = document.getElementById('reqMethod');
+  mEl.textContent = ep.method;
+  mEl.className = 'url-method method-badge m-' + ep.method.toLowerCase();
+
+  document.getElementById('reqUrl').value = getBase() + ep.path;
+
+  renderFields(ep);
+  clearResponse();
+}
+
+function renderFields(ep) {
+  const area = document.getElementById('requestBodyArea');
+  area.innerHTML = '';
+
+  const roleTag = ep.auth ? (ep.role === 'all' ? '<span class="tag tag-auth">Requires Auth</span>' : ep.role === 'admin' ? '<span class="tag tag-admin">Admin Only</span>' : '<span class="tag tag-student">Student Only</span>') : '';
+
+  if (roleTag) {
+    const info = document.createElement('div');
+    info.innerHTML = roleTag;
+    info.style.marginBottom = '8px';
+    area.appendChild(info);
+  }
+
+  if (ep.urlParams && ep.urlParams.length) {
+    const sec = document.createElement('div');
+    sec.className = 'section-divider';
+    sec.textContent = 'URL Parameters';
+    area.appendChild(sec);
+
+    ep.urlParams.forEach(p => {
+      const fg = document.createElement('div');
+      fg.className = 'field-group';
+      fg.innerHTML = `<label>${p.label}</label>
+        <input type="text" id="param_${p.name}" value="${p.default}" placeholder="${p.name}" oninput="updateUrl()">`;
+      area.appendChild(fg);
+    });
+  }
+
+  if (ep.queryParams && ep.queryParams.length) {
+    const sec = document.createElement('div');
+    sec.className = 'section-divider';
+    sec.textContent = 'Query Parameters (optional)';
+    area.appendChild(sec);
+
+    ep.queryParams.forEach(p => {
+      const fg = document.createElement('div');
+      fg.className = 'field-group';
+      fg.innerHTML = `<label>${p.label}</label>
+        <input type="text" id="query_${p.name}" value="${p.default || ''}" placeholder="${p.name}">`;
+      area.appendChild(fg);
+    });
+  }
+
+  if (ep.fields && ep.fields.length) {
+    const sec = document.createElement('div');
+    sec.className = 'section-divider';
+    sec.textContent = ['GET', 'DELETE'].includes(ep.method) ? 'Options' : 'Request Body';
+    area.appendChild(sec);
+
+    ep.fields.forEach(f => {
+      const fg = document.createElement('div');
+      fg.className = 'field-group';
+
+      if (f.type === 'select') {
+        const opts = f.options.map(o => `<option value="${o}" ${o === f.default ? 'selected' : ''}>${o || '(none)'}</option>`).join('');
+        fg.innerHTML = `<label>${f.label}</label><select id="field_${f.name}">${opts}</select>`;
+      } else if (f.type === 'textarea') {
+        fg.innerHTML = `<label>${f.label}</label><textarea id="field_${f.name}" rows="3">${f.default}</textarea>`;
+      } else if (f.type === 'checkbox') {
+        fg.innerHTML = `<label class="checkbox-row"><input type="checkbox" id="field_${f.name}" ${f.default ? 'checked' : ''}> ${f.label}</label>`;
+      } else {
+        fg.innerHTML = `<label>${f.label}</label>
+          <input type="${f.type || 'text'}" id="field_${f.name}" value="${f.default || ''}" placeholder="${f.name}">`;
+      }
+
+      area.appendChild(fg);
+    });
+  }
+
+  if (!ep.fields?.length && !ep.queryParams?.length && !ep.urlParams?.length) {
+    const info = document.createElement('div');
+    info.className = 'info-box';
+    info.innerHTML = 'This endpoint requires no parameters or body. Just hit <strong>Send Request</strong>.';
+    area.appendChild(info);
+  }
+
+  updateUrl();
+}
+
+function updateUrl() {
+  if (!currentEndpoint) return;
+  let path = currentEndpoint.path;
+  if (currentEndpoint.urlParams) {
+    currentEndpoint.urlParams.forEach(p => {
+      const el = document.getElementById('param_' + p.name);
+      if (el) path = path.replace(':' + p.name, el.value || (':' + p.name));
+    });
+  }
+  document.getElementById('reqUrl').value = getBase() + path;
+}
+
+// ---- SEND REQUEST ----
+
+async function sendRequest() {
+  if (!currentEndpoint) {
+    alert('Please select an endpoint first.');
+    return;
+  }
+
+  const method = currentEndpoint.method;
+  let url = document.getElementById('reqUrl').value;
+
+  const qParams = {};
+  if (currentEndpoint.queryParams) {
+    currentEndpoint.queryParams.forEach(p => {
+      const el = document.getElementById('query_' + p.name);
+      if (el && el.value.trim()) qParams[p.name] = el.value.trim();
+    });
+  }
+
+  if (Object.keys(qParams).length) {
+    url += '?' + new URLSearchParams(qParams).toString();
+  }
+
+  const headers = { 'Content-Type': 'application/json' };
+  if (currentEndpoint.auth && token) {
+    headers['Authorization'] = 'Bearer ' + token;
+  }
+
+  let body = undefined;
+  if (!['GET', 'DELETE'].includes(method) && currentEndpoint.fields && currentEndpoint.fields.length) {
+    const bodyObj = {};
+    currentEndpoint.fields.forEach(f => {
+      const el = document.getElementById('field_' + f.name);
+      if (!el) return;
+      if (f.type === 'checkbox') {
+        bodyObj[f.name] = el.checked;
+      } else if (f.type === 'number') {
+        const v = el.value.trim();
+        if (v !== '') bodyObj[f.name] = Number(v);
+      } else {
+        const v = el.value;
+        if (v !== '') bodyObj[f.name] = v;
+      }
+    });
+    body = JSON.stringify(bodyObj);
+  }
+
+  document.getElementById('sendStatus').innerHTML = '<span class="spinner"></span> Sending...';
+  const start = Date.now();
+
+  try {
+    const res = await fetch(url, { method, headers, body });
+    const elapsed = Date.now() - start;
+    let data;
+    try { data = await res.json(); } catch { data = { error: 'Could not parse response as JSON' }; }
+    displayResponse(res.status, data, elapsed);
+  } catch (e) {
+    displayResponse(0, { error: e.message, hint: 'Is the server running on ' + getBase() + '?' }, 0);
+  }
+
+  document.getElementById('sendStatus').textContent = '';
+}
+
+function displayResponse(status, data, ms) {
+  const pill = document.getElementById('respStatus');
+  pill.style.display = 'inline-block';
+  pill.textContent = status || 'Error';
+
+  if (status >= 200 && status < 300) pill.className = 'status-pill status-2xx';
+  else if (status >= 400 && status < 500) pill.className = 'status-pill status-4xx';
+  else pill.className = 'status-pill status-5xx';
+
+  document.getElementById('respTime').textContent = ms ? ms + ' ms' : '';
+
+  const pre = document.createElement('pre');
+  pre.innerHTML = syntaxHighlight(JSON.stringify(data, null, 2));
+  document.getElementById('responseBody').innerHTML = '';
+  document.getElementById('responseBody').appendChild(pre);
+}
+
+function showError(msg) {
+  displayResponse(0, { error: msg }, 0);
+}
+
+function clearResponse() {
+  document.getElementById('respStatus').style.display = 'none';
+  document.getElementById('respTime').textContent = '';
+  document.getElementById('responseBody').innerHTML = `
+    <div class="response-placeholder">
+      <span>&#8680;</span>
+      <p>Send a request to see the response here</p>
+    </div>`;
+}
+
+function copyResponse() {
+  const pre = document.querySelector('#responseBody pre');
+  if (!pre) return;
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+}
+
+function syntaxHighlight(json) {
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, match => {
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) return '<span class="json-key">' + match + '</span>';
+      return '<span class="json-string">' + match + '</span>';
+    }
+    if (/true|false/.test(match)) return '<span class="json-bool">' + match + '</span>';
+    if (/null/.test(match)) return '<span class="json-null">' + match + '</span>';
+    return '<span class="json-number">' + match + '</span>';
+  });
+}
+
+buildNav();
+
+document.getElementById('baseUrl').addEventListener('change', () => {
+  if (currentEndpoint) updateUrl();
+});
+</script>
+</body>
+</html>
